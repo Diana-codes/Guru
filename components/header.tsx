@@ -7,6 +7,11 @@ import { Menu, X } from "lucide-react"
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
+  const scrollToHome = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    setIsOpen(false)
+  }
+
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -18,6 +23,9 @@ export default function Header() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
+          <button onClick={scrollToHome} className="text-foreground hover:text-primary transition">
+            Home
+          </button>
           <Link href="#services" className="text-foreground hover:text-primary transition">
             Services
           </Link>
@@ -42,6 +50,9 @@ export default function Header() {
         {isOpen && (
           <div className="absolute top-full left-0 right-0 bg-background border-b border-border md:hidden">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+              <button onClick={scrollToHome} className="text-foreground hover:text-primary transition text-left">
+                Home
+              </button>
               <Link href="#services" className="text-foreground hover:text-primary transition">
                 Services
               </Link>
